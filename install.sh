@@ -38,8 +38,8 @@ echo "Rancher Install Has Begun"
 
 helm install rancher rancher-latest/rancher \
   --namespace cattle-system \
-  --set hostname=cirrus.thehussains.org \
+  --set hostname=$HOSTNAME \
   --set replicas=1 \
-  --set bootstrapPassword=Chibears2025!!
+  --set bootstrapPassword=Welcome2025!!
 
 echo "Rancher Installed"
