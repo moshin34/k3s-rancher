@@ -13,33 +13,22 @@ echo "use: scp root@$host_ip:/etc/rancher/k3s/k3s.yaml ~/.kube/config"
 echo "After copying the Kubeconfig, Please press any key to continue..."
 read -n 1 -s -r
 
+
+
 echo "Thank you. Now we can install Rancher"
 
 
 helm repo add rancher-latest https://releases.rancher.com/server-charts/latest
-echo "Rancher Repo Added"
 kubectl create namespace cattle-system
-echo "name space added"
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.16.2/cert-manager.crds.yaml
-echo "Cert Manager Chart Installed"
-
 helm repo add jetstack https://charts.jetstack.io
-echo "Jetstack Repo Added"
-
 helm repo update
-echo "Helm repo updated"
-
-
 helm install cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace
-echo "Cert Manager Installed"
-echo "Rancher Install Has Begun"
-
 helm install rancher rancher-latest/rancher \
   --namespace cattle-system \
   --set hostname=$HOSTNAME \
   --set replicas=1 \
   --set bootstrapPassword=Welcome2025!!
 
-echo "Rancher Installed"
