@@ -1,5 +1,7 @@
 
 #!/bin/bash
+# Enable tracing
+set -x
 # Get the IP address using hostname
 host_ip=$(hostname -I | awk '{print $1}')
 curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.31.4+k3s1 sh -s - server --cluster-init
