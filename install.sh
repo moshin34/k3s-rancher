@@ -11,7 +11,7 @@ host_ip=$(hostname -I | awk '{print $1}')
 echo "K3S is now installed.   Now you'll need to copy the KubeConifig to your local workstation."
 echo "use: scp root@$host_ip:/etc/rancher/k3s/k3s.yaml ~/.kube/config"
 echo "After copying the Kubeconfig, Please press any key to continue..."
-read -n 1 -s -r
+read
 
 
 
